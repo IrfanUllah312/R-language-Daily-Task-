@@ -1,0 +1,22 @@
+############### Multiple Linear Regression Model###################
+rm(list=ls())
+data("rock")
+View(rock)
+x1=rock$peri;x1
+x2=rock$shape;x2
+
+y=rock$area;y
+plot(x,y)
+cor(x,y)
+model=lm(y~x);model
+summary(model)
+a=data.frame(x=15);a
+pred=predict(model,a);pred
+a=model$coefficients[1];a
+b=model$coefficients[2];b
+
+y.hat=a+b*x;y.hat
+
+n=length(y);n
+e=(y-y.hat);e
+MSE=sum(e^2)/(n-2);MSE
