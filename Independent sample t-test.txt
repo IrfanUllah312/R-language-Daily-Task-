@@ -1,0 +1,18 @@
+rm(list=ls())
+library(readxl)
+data <- read_excel("C:/Users/Dr. Danish Wasim/Desktop/data.xlsx")
+sal=data$Salaries
+gen=data$Gen
+
+# For Normality we can check through boxplot(graphicall)
+# through Shapiro. test we can check numerically
+
+boxplot(sal~gen)
+shapiro.test(sal)
+
+
+# For equality of variance we use bartlet test
+bartlett.test(sal,gen)
+
+# For Testing independent 0f test we use this test
+t.test(sal~gen,mu=0,alt="two.sided",conf=0.80,var.equal=TRUE,paired=FALSE)
